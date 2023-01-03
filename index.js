@@ -1,4 +1,4 @@
-const {Client, Collection, Events, GatewayIntentBits} = require("discord.js");
+const {Client, Collection, GatewayIntentBits} = require("discord.js");
 require("dotenv/config");
 const fs = require("fs");
 const prefix = "!";
@@ -20,7 +20,7 @@ for(file of commands){
 client.on("ready", async () => {
     console.log("Running " + client.user.tag + "...")
 });
-client.on("messageCreate", message => {
+client.on("messageCreate", async message => {
     if(message.content.startsWith(prefix)){
         const args = message.content.slice(prefix.length).trim().split(/ +/g)
         const commandName = args.shift()
